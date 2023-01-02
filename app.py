@@ -1,7 +1,7 @@
 import flask
 from flask import Flask, request, render_template
 import numpy as np
-import pickle, json
+import pickle
 from lightgbm import LGBMClassifier
 import pandas as pd
 
@@ -47,12 +47,12 @@ def print_proba(X_data):
         second_ment = f'5년 내 폐업이 예상되오니 4년 이상 장기계약에 신중하시기 바랍니다.'
     else :
         second_ment = f'5년 내 폐업 가능성이 낮습니다. 안심하고 계약하셔도 좋습니다.'
-    return first_ment + second_ment 
+    return first_ment, second_ment 
     
 
 def log_the_user_in(name=None):
     print(name)
-    return render_template('index.html', name=name)
+    return render_template('index2.html', name=name)
 
 def valid_login(name=None, password=None):
 
@@ -75,24 +75,29 @@ def login():
             
     # the code below is executed if the request method
     # was GET or the credentials were invalid
-    return render_template('login.html', error=error)
+    return render_template('login2.html', error=error)
     
 
 # 데이터 예측 처리
 @app.route('/result', methods=['POST', 'GET'])
 def index(data=None):
     
-    data = pd.Series([request.form['fiscal_yr'],
-            request.form['asset'],
-            request.form['capital'],
-            request.form['total_equity'],
-            request.form['revenue'],
-            request.form['oprt_income'],
-            request.form['net_income']]).astype(int) # 컬럼 순서변경
     try : 
-        return print_proba(data)
+        data = pd.Series([request.form['fiscal_yr'],
+        request.form['asset'],
+        request.form['capital'],
+        request.form['total_equity'],
+        request.form['revenue'],
+        request.form['oprt_income'],
+        request.form['net_income']]).astype(int) # 컬럼 순서변경
+        return render_template('answer.html',
+                               first_answer = print_proba(data)[0],
+                               second_answer = print_proba(data)[1])    
+        
     except:    # 예외가 발생했을 때 실행됨
-        return '예외가 발생했습니다. 데이터를 입력해주세요'
+        return render_template('answer.html',
+                               first_answer = '예외가 발생했습니다. 데이터를 다시 입력해주세요',
+                               second_answer = '누락된 데이터가 있거나, 데이터에 공백이 있는지 다시 한 번 확인해주세요')    
     
     # Flask 서비스 스타트
     app.run()
