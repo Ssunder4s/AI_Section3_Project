@@ -5,3 +5,7 @@ scikit-learn
 scipy
 virtualenv
 pillow
+pickle
+lightgbm
+pandas
+sklearn
