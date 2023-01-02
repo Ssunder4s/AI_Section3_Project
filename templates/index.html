@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+
+<style>
+    #modeling_wrapper { 
+        border: 20px solid lightblue;
+        padding: 5px 20px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 450px; height: 1400px;
+        margin-left: -220px;
+        margin-top : -700px;
+        
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    } 
+    h1{
+        font-size: 25px;
+        padding-bottom: 20px;
+    }
+    .form{
+        width: 300px;
+    }
+    .form > div{
+        display: flex;
+        justify-content: center;
+        padding-bottom: 7px;
+        align-items: center;
+    }
+    label{
+        flex: 1;
+        text-align: left;
+    }
+    button{
+        width: 85px;
+        float: right;
+        padding: 3px;
+    }
+    input {
+        padding: 5px;
+    }
+</style>
+
+<body>
+    <div id="modeling_wrapper">
+        <h5>중소기업 신용평가 예측 솔루션 SMBIZ</h5>
+        <h5>재무정보를 아래 빈칸에 입력해주세요</h5>
+        <form method="post", action="/result" >
+            <div>
+                <p>
+                    <label for="fiscal_yr">
+                        <h4> 결산년도 </h4></label>
+                    <input type=text name="fiscal_yr">
+
+                    <label for="asset">
+                        <h4> 총자산(단위: 천원) </h4></label>
+                    <input type=text name='asset'>
+
+                    <label for="capital">
+                        <h4> 자본금(자기자본)(단위: 천원) </h4></label> 
+                    <input type=text name='capital'>
+
+                    <label for="total_equity">
+                        <h4> 자본총계(단위: 천원) </h4></label>
+                    <input type=text name='total_equity'>
+
+                    <label for="revenue">
+                        <h4> 매출액(단위: 천원) </h4></label> 
+                    <input type=text name="revenue">
+
+                    <label for="oprt_income">
+                        <h4> 영업이익(단위: 천원) </h4></label>
+                    <input type=text name="oprt_income">
+
+                    <label for="net_income">
+                        <h4> 당기순이익(단위: 천원) </h4></label>
+                    <input type=text name="net_income">
+                    
+                </p>
+                <div style=" text-align: center;">    
+                    <input type=submit value=예측>
+                </div>
+            </div>
+        </form>
+    </div>  
+</body>
+
+</html>
