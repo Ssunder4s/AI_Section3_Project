@@ -33,15 +33,15 @@ def print_proba(X_data):
     y_pred_5 = model_5.predict_proba(X_test)[0][1]
     
     first_ment = f'1년 내 {np.round(y_pred_1*100, 1)}%, \n2년 내 {np.round(y_pred_2*100, 1)}%, \n3년 내 {np.round(y_pred_3*100, 1)}%, \n4년 내 {np.round(y_pred_4*100, 1)}%, \n5년 내 {np.round(y_pred_5*100,1)}% 입니다. '
-    if y_pred_1 > 0.5:
+    if y_pred_1 > 0.15:
         second_ment = f'1년 내 폐업이 예상되오니 1년 미만 단기계약을 포함한 모든 계약에 신중하시기 바랍니다.'
-    elif y_pred_2 > 0.5:
+    elif y_pred_2 > 0.15:
         second_ment = f'2년 내 폐업이 예상되오니 1년 미만 단기계약을 제외한 1년 이상 장기계약에 신중하시기 바랍니다.'
-    elif y_pred_3 > 0.5:
+    elif y_pred_3 > 0.15:
         second_ment = f'3년 내 폐업이 예상되오니 2년 이상 장기계약에 신중하시기 바랍니다.'
-    elif y_pred_4 > 0.5:
+    elif y_pred_4 > 0.15:
         second_ment = f'4년 내 폐업이 예상되오니 3년 이상 장기계약에 신중하시기 바랍니다.'
-    elif y_pred_5 > 0.5:
+    elif y_pred_5 > 0.15:
         second_ment = f'5년 내 폐업이 예상되오니 4년 이상 장기계약에 신중하시기 바랍니다.'
     else :
         second_ment = f'5년 내 폐업 가능성이 낮습니다. 안심하고 계약하셔도 좋습니다.'
