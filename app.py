@@ -100,4 +100,4 @@ def index(data=None):
                                second_answer = '데이터를 다시 입력해주세요')    
 
     # Flask 서비스 스타트
-    app.run()
+    app.run(host='0.0.0.0', port=5000, debug=True)
