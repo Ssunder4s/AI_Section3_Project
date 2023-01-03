@@ -32,7 +32,7 @@ def print_proba(X_data):
     y_pred_4 = model_4.predict_proba(X_test)[0][1]
     y_pred_5 = model_5.predict_proba(X_test)[0][1]
     
-    first_ment = f'해당 기업의 예상 폐업률은 \n1년 내 {np.round(y_pred_1*100, 1)}%, \n2년 내 {np.round(y_pred_2*100, 1)}%, \n3년 내 {np.round(y_pred_3*100, 1)}%, \n4년 내 {np.round(y_pred_4*100, 1)}%, \n5년 내 {np.round(y_pred_5*100,1)}% 입니다. '
+    first_ment = f'1년 내 {np.round(y_pred_1*100, 1)}%, \n2년 내 {np.round(y_pred_2*100, 1)}%, \n3년 내 {np.round(y_pred_3*100, 1)}%, \n4년 내 {np.round(y_pred_4*100, 1)}%, \n5년 내 {np.round(y_pred_5*100,1)}% 입니다. '
     if y_pred_1 > 0.5:
         second_ment = f'1년 내 폐업이 예상되오니 1년 미만 단기계약을 포함한 모든 계약에 신중하시기 바랍니다.'
     elif y_pred_2 > 0.5:
@@ -45,7 +45,8 @@ def print_proba(X_data):
         second_ment = f'5년 내 폐업이 예상되오니 4년 이상 장기계약에 신중하시기 바랍니다.'
     else :
         second_ment = f'5년 내 폐업 가능성이 낮습니다. 안심하고 계약하셔도 좋습니다.'
-    return first_ment, second_ment 
+    first_ment2 = '해당 기업의 예상 폐업률은'
+    return first_ment, second_ment, first_ment2
     
 
 def log_the_user_in(name=None):
@@ -89,6 +90,7 @@ def index(data=None):
         request.form['oprt_income'],
         request.form['net_income']]).astype(int) # 컬럼 순서변경
         return render_template('answer.html',
+                               first_ment2 = print_proba(data)[2],
                                first_answer = print_proba(data)[0],
                                second_answer = print_proba(data)[1])    
         
