@@ -1,17 +1,15 @@
-import flask
+import flask, pickle
 from flask import Flask, request, render_template
 import numpy as np
-import pickle
-from lightgbm import LGBMClassifier
 import pandas as pd
 
-from lightgbm import LGBMClassifier
 from sklearn.metrics import f1_score, average_precision_score
 from sklearn.metrics import make_scorer, accuracy_score, recall_score, precision_score, roc_auc_score
 from sklearn.pipeline import make_pipeline
 from sklearn.pipeline import Pipeline
 from sklearn.impute import KNNImputer
 from sklearn.model_selection import train_test_split
+from lightgbm import LGBMClassifier
 
 app = Flask(__name__)
 
