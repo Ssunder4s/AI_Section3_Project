@@ -94,6 +94,13 @@ a:hover {
 	color: #F99;
 }
 
+h5 {
+  margin-top: 0px;
+  margin-bottom: 0px;
+  color: #007bff;
+  font-weight: 700;
+}
+
 h4 {
   margin-top: 0px;
   margin-bottom: 0px;
@@ -101,7 +108,7 @@ h4 {
   font-weight: 700;
 }
 
-h1, h2, h3, h5, h6 {
+h1, h2, h3, h6 {
   margin-top: 0px;
   margin-bottom: 0px;
   color: #fff;
@@ -226,6 +233,14 @@ section {
   text-decoration: none;
   margin-bottom: 30px;
 }
+
+.heading-section h5 {
+  color: #007bff;
+  font-size: 24px;
+  text-decoration: none;
+  margin-bottom: 30px;
+}
+
 
 .heading-section h4 em {
   color: rgb(255, 255, 255);

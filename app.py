@@ -94,8 +94,8 @@ def index(data=None):
         
     except:    # 예외가 발생했을 때 실행됨
         return render_template('answer.html',
-                               first_answer = '예외가 발생했습니다. 데이터를 다시 입력해주세요',
-                               second_answer = '누락된 데이터가 있거나, 데이터에 공백이 있는지 다시 한 번 확인해주세요')    
-    
+                               first_answer = '누락된 데이터가 있거나 입력 데이터에 공백이 있습니다.',
+                               second_answer = '데이터를 다시 입력해주세요')    
+
     # Flask 서비스 스타트
     app.run()
