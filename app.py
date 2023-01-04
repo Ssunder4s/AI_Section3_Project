@@ -63,10 +63,6 @@ def valid_login(name=None, password=None):
 #로그인 페이지 라우팅
 app.route("/")
 @app.route('/', methods=['POST', 'GET'])
-def start():
-    return render_template('login2.html', error=error)
-
-@app.route('/index', methods=['POST', 'GET'])
 def login():
     error = None
     if request.method == 'POST':
@@ -78,7 +74,7 @@ def login():
             
     # the code below is executed if the request method
     # was GET or the credentials were invalid
-    
+    return render_template('login2.html', error=error)
     
 
 # 데이터 예측 처리
