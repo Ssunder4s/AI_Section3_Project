@@ -62,19 +62,30 @@ def valid_login(name=None, password=None):
 
 #로그인 페이지 라우팅
 app.route("/")
-@app.route('/', methods=['POST', 'GET'])
+@app.route('/')
 def login():
-    error = None
-    if request.method == 'POST':
-        if valid_login(request.form['username'],
-                      request.form['password']):
-            return log_the_user_in(request.form['username'])
-        else:
-            error = 'Invalid username/password'
-            
-    # the code below is executed if the request method
-    # was GET or the credentials were invalid
     return render_template('login2.html', error=error)
+
+@app.route('/index', methods=['POST', 'GET'])
+def index():
+   if valid_login(request.form['username'], request.form['password']):
+            return log_the_user_in(request.form['username'])
+
+
+# app.route("/")
+# @app.route('/', methods=['POST', 'GET'])
+# def login():
+#     error = None
+#     if request.method == 'POST':
+#         if valid_login(request.form['username'],
+#                       request.form['password']):
+#             return log_the_user_in(request.form['username'])
+#         else:
+#             error = 'Invalid username/password'
+            
+#     # the code below is executed if the request method
+#     # was GET or the credentials were invalid
+#     return render_template('login2.html', error=error)
     
 
 # 데이터 예측 처리
